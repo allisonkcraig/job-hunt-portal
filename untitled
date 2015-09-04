@@ -1,0 +1,7 @@
+add_user(cls, email, fname,  password=None, fb_id=None)
+
+add_user('allison@craig.net', 'Allison',  'hello', fb_id=None)
+
+
+INSERT INTO table_name (email, fname, password)
+VALUES ('allison@craig.net', 'Allison',  'hello');

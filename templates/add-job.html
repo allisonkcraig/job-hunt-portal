@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form class="form-signin" action="/save" method="POST">
+
+  <center><h2 class="heading-titles">Add Job</h2></center>
+
+  <div class="form-group col-md-6 col-md-offset-3">
+    <label for="company-field">Company</label>
+    <input type="text"
+    name="company"
+    class="form-control input-md"
+    placeholder="Company Name"
+    required
+    autofocus>
+  </div>
+
+  <div class="form-group col-md-6 col-md-offset-3">
+    <label for="title-field">Job Title</label>
+    <input type="text"
+    name="title"
+    class="form-control input-md"
+    placeholder="Job Title"
+    required>
+  </div>
+
+  <div class="form-group col-md-6 col-md-offset-3">
+    <label for="contact-field">Contact Person</label>
+    <input type="text"
+    name="contact"
+    class="form-control input-md"
+    placeholder="Contact Person">
+  </div>
+  
+  <div class="form-group col-md-6 col-md-offset-3">
+    <label for="applied-field">Date Applied</label>
+    <input type="text"
+    name="applied"
+    class="form-control input-md"
+    value="n/a"
+    placeholder="Notes">
+  </div>
+
+  <div class="form-group col-md-6 col-md-offset-3">
+    <label for="applied-field">Interview 1</label>
+    <input type="text"
+    name="int1"
+    class="form-control input-md"
+    value="n/a"
+    placeholder="Interview 1">
+  </div>
+
+  <div class="form-group col-md-6 col-md-offset-3">
+    <label for="applied-field">Interview 2</label>
+    <input type="text"
+    name="int2"
+    class="form-control input-md"
+    value="n/a"
+    placeholder="Interview 2">
+  </div>
+
+  <div class="form-group col-md-6 col-md-offset-3">
+    <label for="applied-field">Interview 3</label>
+    <input type="text"
+    name="int3"
+    class="form-control input-md"
+    value="n/a"
+    placeholder="Interview 3">
+  </div>
+
+
+  <div class="form-group col-md-6 col-md-offset-3">
+    <label for="notes-field">Notes</label><br>
+   <textarea rows="4" cols="80" name="notes" value="n/a" maxlength=200 >
+    </textarea>
+  </div>
+  
+
+  <button class="btn btn-lg btn-primary col-md-4 col-md-offset-4" type="submit">Submit
+  </button>
+
+</form>
+
+{% endblock %}

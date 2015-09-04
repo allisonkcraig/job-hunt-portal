@@ -1,0 +1,6 @@
+.DS_Store
+canvasenv
+secrets.sh
+*secrets.*
+*.pyc
+*.db

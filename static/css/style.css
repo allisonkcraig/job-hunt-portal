@@ -1,0 +1,199 @@
+body {
+	padding-top: 70px;
+	margin-bottom: 2em;
+	padding-bottom: 4em;
+}
+
+
+.nickname{
+	padding-top: 1em;
+}
+
+
+.container {
+	margin-top: -2em;
+}
+
+
+.drafting-table {
+	margin-top: 0.5em;
+    position: fixed;
+    display: inline-block;
+    border: 1px black
+}
+
+
+#first-page {
+	margin-top: 5em;
+}
+
+
+.btn {
+	font-family: "Raleway";
+}
+
+
+.download-button {
+	display: inline;
+}
+
+
+#video-page {
+	background-image: url('/static/img/dreamstime_xl_55906489.jpg');
+	background-size: cover;
+}
+
+
+#measurement-table {
+	font-family: "Raleway";
+}
+
+
+.working-table {
+	padding-top: 5em;
+}
+
+
+.header {
+	height: 80px;
+	margin-bottom: 5px;
+	font-size: 30px;
+}
+
+
+#block-choice-page{
+	padding-top: 3em;
+}
+
+
+.heading-titles {
+	font-family: 'Pacifico', cursive;
+	color: #EA8C86;
+}
+
+
+.table-name {
+	position: fixed;
+}
+
+
+.block-title{
+	padding-bottom: 0.5em;
+}
+
+
+#corner-logo{
+	font-family: 'Pacifico', cursive;
+	font-size: 30px;
+	text-decoration: none;
+	text-shadow: 2px 2px #EA8C86;
+	color: #7D1141;
+}
+
+
+#splash-header {
+	text-shadow: 2px 3px #7D1141;
+	color: #EA8C86;
+	font-family: 'Pacifico', cursive;
+	font-size: 7em;
+}
+
+
+.content-splash {
+	width: 50%;
+	margin: 0 auto;
+	margin-top: 10em;
+	font-family: "Raleway";
+	color: white;
+}
+
+
+.splash-body {
+	background-image: url('/static/img/dreamstime_xl_55906489.jpg');
+	background-size: 100%;
+	background-position: 0px 50%;
+	color:white;
+}
+
+.video-body {
+	background-image: url('/static/img/dreamstime_xl_55906489.jpg');
+	background-size: cover;
+	color:white;
+}
+
+
+#video-header {
+	text-shadow: 2px 2px white;
+	color: #EA8C86;
+	font-family: 'Pacifico', cursive;
+	font-size: 100px;
+}
+
+
+#about-header {
+	text-shadow: 2px 2px white;
+	color: #EA8C86;
+	font-family: 'Pacifico', cursive;
+	font-size: 50px;
+	padding-top: 20px
+}
+
+
+.navbar {
+	font-family: "Raleway";
+}
+
+
+#beta {
+	color: #EA8C86;
+	text-shadow: 1px 1px #D3D3D3;
+	font-family: "Raleway";
+	margin-top: 0px;
+}
+
+
+footer {
+	font-family: "Raleway";
+	background-color: #EA8C86;
+	position:fixed;
+    left:0px;
+    bottom:0px;
+    height:20px;
+    width:100%;
+}
+
+
+#footer-a {
+	text-decoration: none;
+	color: black;
+	float: right;
+}
+
+
+#scaledBlock {
+	height: 20in;
+}
+
+
+.raleway {
+	font-family: "Raleway";
+}
+
+
+.instructions {
+	font-size: 1.5em;
+}
+
+
+#hidden-canvas {
+	position: absolute;
+	margin-top: -5000px;
+	margin-left: -50000px;
+	display: block;
+	z-index: -1;
+}
+
+
+.type-icon {
+	height: 275px;
+}
