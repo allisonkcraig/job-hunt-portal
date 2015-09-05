@@ -212,6 +212,17 @@ def save_interview():
     return redirect("/profile")
 
 
+@app.route("/delete-interview", methods=["POST"])
+def delete_interview():
+    """Deletes job via AJAX call"""
+
+    interview_id_input = request.form.get("interview-id")
+    print interview_id_input
+    # test = Company_Post.query.filter(Company_Post.interview_id==interview_id_input).first()
+    interview_in_db = Interview.query.filter(Interview.interview_id==interview_id_input).first()
+    db.session.delete(interview_in_db)
+    db.session.commit()
+    return jsonify({'status':'ok'})
 
 
 JS_TESTING_MODE = False

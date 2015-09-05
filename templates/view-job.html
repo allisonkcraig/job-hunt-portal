@@ -13,7 +13,7 @@
 {% if job.notes %}
 <h3>Notes: {{job.notes}}</h3>
 {% endif %}
-
+<br>
 <form action='/add-interview'>
 	<button class="btn btn-default" type="submit" value='{{ job.job_id }}' name='add-interview'>Add Interview</button>
 </form>
@@ -32,37 +32,42 @@
   </tr>
 
 	{% for interview in interviews %}
+	<div class="saved-interview">
 	<tr>
 		<td>{{interview.date}}</td>
 		<td>{{interview.interviewer}}</td>
 		<td>{{interview.notes}}</td>
+		<td>
+			<button class="btn btn-danger delete-btn-interview" type='submit' name='interview-id' value="{{ interview.interview_id }}">DELETE INTERVIEW</button>
+		</td>	
 
 	</tr>
+	</div>
 	{% endfor %}
 </table>
 {% endif %}
 </div>
 <script>
-//   function deleteJob (evt) {
-//   evt.preventDefault();
+  function deleteInterview (evt) {
+  evt.preventDefault();
 
-//   $.ajax({
-//     url: "/delete-job",
-//     data: {'job-id':$(this).val()},
-//     type: "POST",
-//     success: function(response) {
-//       console.log(response)
-//     },
-//     error: function(error) {
-//       console.log('error')
-//     }
-//   });
-//   $(this).closest('.saved-job').remove();
-// };
+  $.ajax({
+    url: "/delete-interview",
+    data: {'interview-id':$(this).val()},
+    type: "POST",
+    success: function(response) {
+      console.log(response)
+    },
+    error: function(error) {
+      console.log('error')
+    }
+  });
+  $(this).closest('.saved-interview').remove();
+};
 
 
 
-// $('.delete-btn-job').on('click', deleteJob);
+$('.delete-btn-interview').on('click', deleteInterview);
 // // $('.delete-btn-job').on('click', alert("HII"));
 
 

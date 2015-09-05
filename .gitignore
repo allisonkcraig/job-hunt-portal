@@ -4,3 +4,5 @@ secrets.sh
 *secrets.*
 *.pyc
 *.db
+*secret*
+*env
