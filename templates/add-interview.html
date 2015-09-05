@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form class="form-signin" action="/save-interview" method="POST">
+
+  <center><h2 class="heading-titles">Add Interview</h2></center>
+
+  <div class="form-group col-md-6 col-md-offset-3">
+    <label for="company-field">Date</label>
+    <input type="text"
+    name="company"
+    class="form-control input-md"
+    required
+    autofocus>
+  </div>
+
+  <div class="form-group col-md-6 col-md-offset-3">
+    <label for="title-field">Interviewer</label>
+    <input type="text"
+    name="interviewer"
+    class="form-control input-md"
+    required>
+  </div>
+  
+
+  <div class="form-group col-md-6 col-md-offset-3">
+    <label for="notes-field">Notes</label><br>
+   <textarea rows="4" cols="80" name="notes" maxlength=200 >
+    </textarea>
+  </div>
+  
+   <input type="hidden"
+    name="job_id"
+    value="{{job_info.job_id}}">
+
+    <input type="hidden"
+    name="company"
+    value="{{job_info.company}}">
+
+    <input type="hidden"
+    name="title"
+    value="{{job_info.title}}">
+
+  <button class="btn btn-lg btn-primary col-md-4 col-md-offset-4" type="submit">Submit
+  </button>
+
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='container'>
+<center>
+<h2>Company: {{job.company}}</h2>
+<h3>Job Title: {{job.title}}</h3>
+{% if job.date_applied %}
+<h3>Date Applied: {{job.date_applied}}</h3>
+{% endif %}
+{% if job.contact_person %}
+<h3>Contact Person: {{job.contact_person}}</h3>
+{% endif %}
+{% if job.notes %}
+<h3>Notes: {{job.notes}}</h3>
+{% endif %}
+
+<form action='/add-interview'>
+	<button class="btn btn-default" type="submit" value='{{ job.job_id }}' name='add-interview'>Add Interview</button>
+</form>
+
+</center>
+
+
+{% if interviews %}
+<center><h2>Your Interviews</h2></center>
+<table class="table table-striped">
+  <tr>
+    <th>Date</th>
+    <th>Interviewer</th> 
+    <th>Notes</th>
+    <th></th>
+  </tr>
+
+	{% for interview in interviews %}
+	<tr>
+		<td>{{interview.date}}</td>
+		<td>{{interview.interviewer}}</td>
+		<td>{{interview.notes}}</td>
+
+	</tr>
+	{% endfor %}
+</table>
+{% endif %}
+</div>
+<script>
+//   function deleteJob (evt) {
+//   evt.preventDefault();
+
+//   $.ajax({
+//     url: "/delete-job",
+//     data: {'job-id':$(this).val()},
+//     type: "POST",
+//     success: function(response) {
+//       console.log(response)
+//     },
+//     error: function(error) {
+//       console.log('error')
+//     }
+//   });
+//   $(this).closest('.saved-job').remove();
+// };
+
+
+
+// $('.delete-btn-job').on('click', deleteJob);
+// // $('.delete-btn-job').on('click', alert("HII"));
+
+
+
+</script>
+
+
+{% endblock %}

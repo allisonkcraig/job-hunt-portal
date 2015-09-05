@@ -20,53 +20,30 @@
     <input type="text"
     name="title"
     class="form-control input-md"
-    placeholder="Job Title"
     required>
   </div>
 
   <div class="form-group col-md-6 col-md-offset-3">
     <label for="contact-field">Contact Person</label>
     <input type="text"
-    name="contact"
-    class="form-control input-md"
-    placeholder="Contact Person">
+    name="contact_person"
+    class="form-control input-md">
   </div>
   
   <div class="form-group col-md-6 col-md-offset-3">
     <label for="applied-field">Date Applied</label>
     <input type="text"
-    name="applied"
-    class="form-control input-md"
-    value="n/a"
-    placeholder="Notes">
+    name="applied_date"
+    class="form-control input-md">
   </div>
 
   <div class="form-group col-md-6 col-md-offset-3">
-    <label for="applied-field">Interview 1</label>
-    <input type="text"
-    name="int1"
-    class="form-control input-md"
-    value="n/a"
-    placeholder="Interview 1">
+    <label for="contact-field">Post URL</label>
+    <input type="url"
+    name="post_url"
+    class="form-control input-md">
   </div>
 
-  <div class="form-group col-md-6 col-md-offset-3">
-    <label for="applied-field">Interview 2</label>
-    <input type="text"
-    name="int2"
-    class="form-control input-md"
-    value="n/a"
-    placeholder="Interview 2">
-  </div>
-
-  <div class="form-group col-md-6 col-md-offset-3">
-    <label for="applied-field">Interview 3</label>
-    <input type="text"
-    name="int3"
-    class="form-control input-md"
-    value="n/a"
-    placeholder="Interview 3">
-  </div>
 
 
   <div class="form-group col-md-6 col-md-offset-3">
@@ -80,5 +57,6 @@
   </button>
 
 </form>
+
 
 {% endblock %}

@@ -4,7 +4,7 @@ import os
 import jinja2
 import json
 
-from model import User, Company_Post, connect_to_db, db
+from model import User, Company_Post, Interview, connect_to_db, db
 
 app = Flask(__name__)
 
@@ -149,13 +149,11 @@ def save_job():
     title = request.form.get('title')
 
     notes = request.form.get('notes') 
-    date_applied = request.form.get('notes')
-    contact_person = request.form.get('notes')
-    date_interview_one = request.form.get('notes')
-    date_interview_two = request.form.get('notes')
-    date_interview_three = request.form.get('notes')
+    date_applied = request.form.get('applied_date')
+    contact_person = request.form.get('contact_person')
+    post_url = request.form.get('post_url')
 
-    job_to_add = Company_Post(user_id=user_id, company=company, title=title, notes=notes, date_applied=date_applied, contact_person=contact_person, date_interview_one=date_interview_one, date_interview_two=date_interview_two, date_interview_three=date_interview_three)
+    job_to_add = Company_Post(user_id=user_id, company=company, title=title, notes=notes, date_applied=date_applied, contact_person=contact_person, post_url=post_url)
        
 
     db.session.add(job_to_add)
@@ -163,6 +161,57 @@ def save_job():
        
     flash("Job Saved")
     return redirect("/profile")
+
+@app.route("/delete-job", methods=["POST"])
+def delete_job():
+    """Deletes job via AJAX call"""
+
+    job_id_input = request.form.get("job-id")
+    print job_id_input
+    # test = Company_Post.query.filter(Company_Post.job_id==job_id_input).first()
+    job_in_db = Company_Post.query.filter(Company_Post.job_id==job_id_input).first()
+    db.session.delete(job_in_db)
+    db.session.commit()
+    return jsonify({'status':'ok'})
+
+@app.route('/view-job/<int:job_id>')
+def view_job(job_id):
+    job = Company_Post.query.filter(Company_Post.job_id==job_id).first()
+    interviews = Interview.query.filter(Interview.job_id==job_id).all()
+    return render_template('view-job.html', job=job, interviews=interviews)
+
+
+@app.route("/add-interview")
+def add_interview():
+    """Add interview to job"""
+    job_id = request.args.get("add-interview")
+    print job_id
+    job_info = Company_Post.query.filter(Company_Post.job_id==job_id).first()
+    return render_template('add-interview.html', job_info=job_info)
+
+
+@app.route("/save-interview", methods=["POST"])
+def save_interview():
+    """Log out user and send them to the splash page. Delete session information for logged in user"""
+    job_id = request.form.get('job_id')
+    user_id = session['current_user_id']
+    company = request.form.get('company')
+    title = request.form.get('title')
+
+    date = request.form.get('date')
+    interviewer = request.form.get('interviewer')
+    notes = request.form.get('notes')
+
+    interview_to_add = Interview(job_id=job_id, user_id=user_id, company=company, title=title, date=date, interviewer=interviewer, notes=notes)
+       
+
+    db.session.add(interview_to_add)
+    db.session.commit() 
+       
+    flash("Interview Saved")
+    return redirect("/profile")
+
+
 
 
 JS_TESTING_MODE = False

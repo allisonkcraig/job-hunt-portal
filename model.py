@@ -48,11 +48,7 @@ class Company_Post(db.Model):
     notes = db.Column(db.String(200), nullable=True) 
     date_applied = db.Column(db.String(64), nullable=True)
     contact_person = db.Column(db.String(64), nullable=True)
-    date_interview_one = db.Column(db.String(64), nullable=True)
-    date_interview_two = db.Column(db.String(64), nullable=True)
-    date_interview_three = db.Column(db.String(64), nullable=True)
-
-
+    post_url = db.Column(db.String(200), nullable=True)
 
     # Define relationship to user
     user = db.relationship("User",
@@ -74,17 +70,60 @@ class Company_Post(db.Model):
 
                         notes,
                         date_applied,
-                        contact_person,
-                        date_interview_one,
-                        date_interview_two,
-                        date_interview_three):
+                        contact_person):
 
         job_to_add = cls(
-                        job_id, user_id, company, title, notes, date_applied, contact_person, date_interview_one, date_interview_two, date_interview_three)
+                        job_id, user_id, company, title, notes, date_applied, contact_person)
         db.session.add(job_to_add)
         db.session.commit()
 
 
+class Interview(db.Model):
+    """An interview."""
+    
+    __tablename__ = "Interviews"
+
+    interview_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    job_id = db.Column(db.Integer, db.ForeignKey('Company_Posts.job_id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('Users.user_id'))
+    company = db.Column(db.String(64), nullable=False)
+    title = db.Column(db.String(64), nullable=False)
+    date = db.Column(db.String(64), nullable=True)
+    interviewer = db.Column(db.String(64), nullable=True)
+    notes = db.Column(db.String(200), nullable=True) 
+
+    # Define relationship to user
+    user = db.relationship("User",
+                           backref=db.backref("Interviews"))
+
+    company_post = db.relationship("Company_Post",
+                           backref=db.backref("Interviews"))
+
+    def __repr__(self):
+        """Provide helpful representation when printed."""
+
+        return "<Job Id= %s User Id= %s>" % (self.job_id, self.user_id)
+
+
+    # TODO EXPAND THIS FUNCTION TO ADD MORE MEASUREMENTS
+    # @classmethod
+    # def add_job_to_db( cls, 
+    #                     job_id,
+    #                     user_id,
+    #                     company,
+    #                     title,
+
+    #                     notes,
+    #                     date_applied,
+    #                     contact_person,
+    #                     date_interview_one,
+    #                     date_interview_two,
+    #                     date_interview_three):
+
+    #     job_to_add = cls(
+    #                     job_id, user_id, company, title, notes, date_applied, contact_person, date_interview_one, date_interview_two, date_interview_three)
+    #     db.session.add(job_to_add)
+    #     db.session.commit()
 
 
 # Helper functions

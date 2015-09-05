@@ -8,12 +8,20 @@
 
 <center><h3 class="raleway">Your Saved Jobs: </h3></center>
 <table class="table table-hover table-striped">
+	<th></th>
 	<th><center>Company</center></th>
 	<th><center>Job Title</center></th>
 	<th><center>Contact Person</center></th>
 	<th><center>Applied Date</center></th>
+	<th></th>
+	<th></th>
 {% for job in jobs %}
-		<tr class="saved-block">
+		<tr class="saved-job">
+			<td>
+				<form action='/view-job/{{job.job_id}}'>
+				<button type='submit' class="btn" type="submit" value='{{ job.job_id }}' name='view-job'>View Job<button>
+				</form>
+			</td>
 			<td>
 				<center><h4>{{ job.company }}</h4></center>
 			</td>
@@ -26,12 +34,47 @@
 			<td>
 				<center><h4>{{ job.date_applied }}</h4></center>
 			</td>
+			<td>
+				<form action='/add-interview'>
+				<button class="btn delete-btn-top" type="submit" value='{{ job.job_id }}' name='add-interview'>Add Interview<button>
+				</form>
+			</td>
+
+			<td>
+				<button class="btn btn-danger delete-btn-job" type='submit' name='job-id' value="{{ job.job_id }}">DELETE JOB</button>
+			</td>
 		</tr>
 
 {% endfor %}
 </table>
 {% endif %}
-<script src="static/js/delete-blocks.js"></script>
+
+<script>
+  function deleteJob (evt) {
+  evt.preventDefault();
+
+  $.ajax({
+    url: "/delete-job",
+    data: {'job-id':$(this).val()},
+    type: "POST",
+    success: function(response) {
+      console.log(response)
+    },
+    error: function(error) {
+      console.log('error')
+    }
+  });
+  $(this).closest('.saved-job').remove();
+};
+
+
+
+$('.delete-btn-job').on('click', deleteJob);
+// $('.delete-btn-job').on('click', alert("HII"));
+
+
+
+</script>
 
 
 {% endblock %}
