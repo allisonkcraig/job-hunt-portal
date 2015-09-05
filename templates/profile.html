@@ -8,13 +8,23 @@
 
 <center><h3 class="raleway">Your Saved Jobs: </h3></center>
 <table class="table table-hover table-striped">
-	<th><center>Measurement Chart Name</center></th>
-	<th></th>
-	<th></th>
-	<th></th>
+	<th><center>Company</center></th>
+	<th><center>Job Title</center></th>
+	<th><center>Contact Person</center></th>
+	<th><center>Applied Date</center></th>
 {% for job in jobs %}
 		<tr class="saved-block">
-			<td><center><h4>{{ job.company }}</h4></center>
+			<td>
+				<center><h4>{{ job.company }}</h4></center>
+			</td>
+			<td>
+				<center><h4>{{ job.title }}</h4></center>
+			</td>
+			<td>
+				<center><h4>{{ job.contact_person }}</h4></center>
+			</td>
+			<td>
+				<center><h4>{{ job.date_applied }}</h4></center>
 			</td>
 		</tr>
 

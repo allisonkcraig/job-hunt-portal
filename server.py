@@ -155,7 +155,7 @@ def save_job():
     date_interview_two = request.form.get('notes')
     date_interview_three = request.form.get('notes')
 
-    job_to_add = Company_Post(user_id, company, title, notes, date_applied, contact_person, date_interview_one, date_interview_two, date_interview_three)
+    job_to_add = Company_Post(user_id=user_id, company=company, title=title, notes=notes, date_applied=date_applied, contact_person=contact_person, date_interview_one=date_interview_one, date_interview_two=date_interview_two, date_interview_three=date_interview_three)
        
 
     db.session.add(job_to_add)
